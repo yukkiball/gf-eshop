@@ -19,10 +19,14 @@
 
 # Database.
 [database]
-    link  = "mysql:root:123456@tcp(127.0.0.1:3306)/yuki"
+    link  = "mysql:root:123456@tcp(127.0.0.1:3306)/gf_eshop"
     debug = true
     # Database logger.
     [database.logger]
         Path   = "./tmp/log/gf-app/sql"
         Level  = "all"
         Stdout = true
+
+[gfcli]
+    [[gfcli.gen.dao]]
+        link = "mysql:root:123456@tcp(127.0.0.1:3306)/gf_eshop"
