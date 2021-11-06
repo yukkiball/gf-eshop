@@ -6,6 +6,8 @@ package dao
 
 import (
 	"gf-eshop/app/dao/internal"
+	"gf-eshop/app/model"
+	"github.com/gogf/gf/frame/g"
 )
 
 // userInfoDao is the manager for logic model data accessing and custom defined data operations functions management.
@@ -26,3 +28,10 @@ func init() {
 }
 
 // Fill with you ideas below.
+func (*userInfoDao) GetUserById(id int) (userInfo *model.UserInfo, err error){
+	err = UserInfo.Where("id=?", id).Scan(&userInfo)
+	if err != nil {
+		g.Log().Errorf("根据ID获取用户失败，失败信息：%v", err.Error())
+	}
+	return
+}

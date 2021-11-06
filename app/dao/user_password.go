@@ -6,6 +6,8 @@ package dao
 
 import (
 	"gf-eshop/app/dao/internal"
+	"gf-eshop/app/model"
+	"github.com/gogf/gf/frame/g"
 )
 
 // userPasswordDao is the manager for logic model data accessing and custom defined data operations functions management.
@@ -26,3 +28,10 @@ func init() {
 }
 
 // Fill with you ideas below.
+func (*userPasswordDao) GetPasswordById(id int) (userPassword *model.UserPassword, err error){
+	err = UserPassword.Where("user_id=?", id).Scan(&userPassword)
+	if err != nil {
+		g.Log().Errorf("根据ID获取用户密码，失败信息：%v", err.Error())
+	}
+	return
+}
